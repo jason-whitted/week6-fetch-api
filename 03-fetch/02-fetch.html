@@ -1,0 +1,10 @@
+<script>
+  console.log("before");
+
+  var promise = fetch("https://www.dnd5eapi.co/api/classes")
+    .then(function (response) {
+      console.log("Response:", response);
+    });
+
+  console.log("after");
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DnD Classes</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>DnD Classes</h1>
+    <ul></ul>
+
+    <script>
+      function loadClasses() {
+        return fetch("https://www.dnd5eapi.co/api/classes")
+          .then(function (response) {
+            return response.json();
+          })
+          .then(renderClasses);
+      }
+
+      loadClasses();
+
+      function renderClasses(json) {
+        var list = document.querySelector("ul");
+
+        for (var i = 0; i < json.results.length; i++) {
+          const result = json.results[i];
+          var item = document.createElement("li");
+          item.textContent = result.name;
+          list.appendChild(item);
+        }
+      }
+    </script>
+</body>
+
+</html>
